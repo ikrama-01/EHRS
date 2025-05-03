@@ -5,14 +5,22 @@
 //     // set the provider you want from Web3.providers
 // web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
 // }
+// if (typeof window.ethereum !== 'undefined') {
+//     const web3 = new Web3(window.ethereum);
+//     ethereum.request({ method: 'eth_requestAccounts' });
+//     console.log('Web3 Connected');
+// } else {
+//     console.log('No Ethereum wallet detected');
+// }
+
 
 var web3;
 
-var agentContractAddress = '0x75E115394aacC7c6063E593B9292CB9417E4cbeC';
+var agentContractAddress = '0xc69D4e0d99B9B253BbE69BA83609d17F52e841ea';
 
 function connect(){
     web3 = new Web3(window.ethereum)
-    window.ethereum.enable().catch(error => {
+    window.ethereum.request({ method: 'eth_requestAccounts' }).catch(error => {
         // User denied account access
         console.log(error);
     })
